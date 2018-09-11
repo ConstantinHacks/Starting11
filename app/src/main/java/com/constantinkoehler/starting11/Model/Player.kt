@@ -11,35 +11,27 @@ data class Statistic(val k : String, val v: Double){
     }
 }
 
-open class Player(val name: String,val number: Int) : Serializable {
+open class Player(val firstName: String,val lastName: String,val number: Int) : Serializable {
     var mainStatistic = Statistic("",0.0)
     var secondStatistic = Statistic("",0.0)
+    var isInLineUp = true
+    val name = "$firstName $lastName"
 
-    open fun simpleDescription() =
-            "No Player Information"
+    override fun toString(): String {
+        return "$firstName $lastName: ${mainStatistic}, ${secondStatistic}"
+    }
 }
 
-class Forward(val goalsScores: Double, val assists: Double, name: String, number: Int) : Player(name,number) {
+class Forward(goalsScores: Double, shots: Double, firstName: String, lastName: String, number: Int) : Player(firstName,lastName,number) {
     init {
         mainStatistic = Statistic("Goals", goalsScores)
-        secondStatistic = Statistic("Assists",assists)
-    }
-
-    override fun simpleDescription(): String {
-        return "$name: ${mainStatistic}, ${secondStatistic}"
+        secondStatistic = Statistic("Shots",shots)
     }
 }
 
-class Midfielder(val goalsScores: Double, val assists: Double, name: String, number: Int) : Player(name,number) {
+class Midfielder(assits: Double, passesCompleted: Double, firstName: String, lastName: String,number: Int) : Player(firstName,lastName,number) {
     init {
-        mainStatistic = Statistic("Goals", goalsScores)
-        secondStatistic = Statistic("Assists",assists)
-    }
-
-    override fun simpleDescription(): String {
-        return "$name: ${mainStatistic}, ${secondStatistic}"
+        mainStatistic = Statistic("Assists", assits)
+        secondStatistic = Statistic("Passes",passesCompleted)
     }
 }
-
-
-
