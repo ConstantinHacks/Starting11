@@ -10,15 +10,20 @@ class MainActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                message.setText(R.string.title_home)
+                supportFragmentManager
+                        .beginTransaction()
+                        .add(R.id.container,LineupFragment.newInstance(),"lineup")
+                        .commit()
+
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                message.setText(R.string.title_dashboard)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
+                supportFragmentManager
+                        .beginTransaction()
+                        .add(R.id.container,PlayerListFragment.newInstance(),"playerList")
+                        .commit()
+
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -28,6 +33,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        supportFragmentManager
+                .beginTransaction()
+                .add(R.id.container,LineupFragment.newInstance(),"lineup")
+                .commit()
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }

@@ -1,5 +1,7 @@
 package com.constantinkoehler.starting11.Model
 
+import java.io.Serializable
+
 data class Statistic(val k : String, val v: Double){
     var statKey : String = k
     var statVal : Double = v
@@ -9,15 +11,15 @@ data class Statistic(val k : String, val v: Double){
     }
 }
 
-open class Player(val name: String) {
+open class Player(val name: String,val number: Int) : Serializable {
     var mainStatistic = Statistic("",0.0)
     var secondStatistic = Statistic("",0.0)
 
     open fun simpleDescription() =
-            "Player's Name: $name"
+            "No Player Information"
 }
 
-class Forward(val goalsScores: Double, val assists: Double, name: String) : Player(name) {
+class Forward(val goalsScores: Double, val assists: Double, name: String, number: Int) : Player(name,number) {
     init {
         mainStatistic = Statistic("Goals", goalsScores)
         secondStatistic = Statistic("Assists",assists)
@@ -28,7 +30,7 @@ class Forward(val goalsScores: Double, val assists: Double, name: String) : Play
     }
 }
 
-class Midfielder(val goalsScores: Double, val assists: Double, name: String) : Player(name) {
+class Midfielder(val goalsScores: Double, val assists: Double, name: String, number: Int) : Player(name,number) {
     init {
         mainStatistic = Statistic("Goals", goalsScores)
         secondStatistic = Statistic("Assists",assists)
