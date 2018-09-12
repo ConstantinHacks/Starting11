@@ -11,14 +11,14 @@ data class Statistic(val k : String, val v: Double){
     }
 }
 
-open class Player(val firstName: String,val lastName: String,val number: Int) : Serializable {
+open class Player(private val firstName: String, val lastName: String, val number: Int) : Serializable {
     var mainStatistic = Statistic("",0.0)
     var secondStatistic = Statistic("",0.0)
     var isInLineUp = true
     val name = "$firstName $lastName"
 
     override fun toString(): String {
-        return "$firstName $lastName: ${mainStatistic}, ${secondStatistic}"
+        return "$firstName $lastName: $mainStatistic, $secondStatistic"
     }
 }
 
@@ -29,9 +29,9 @@ class Forward(goalsScores: Double, shots: Double, firstName: String, lastName: S
     }
 }
 
-class Midfielder(assits: Double, passesCompleted: Double, firstName: String, lastName: String,number: Int) : Player(firstName,lastName,number) {
+class Midfielder(assists: Double, passesCompleted: Double, firstName: String, lastName: String,number: Int) : Player(firstName,lastName,number) {
     init {
-        mainStatistic = Statistic("Assists", assits)
+        mainStatistic = Statistic("Assists", assists)
         secondStatistic = Statistic("Passes",passesCompleted)
     }
 }

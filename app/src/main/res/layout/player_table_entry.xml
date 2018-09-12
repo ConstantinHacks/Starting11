@@ -58,7 +58,7 @@
             android:layout_height="match_parent" />
 
         <ImageView
-            android:src="@drawable/ic_home_black_24dp"
+            android:src="@drawable/ic_unchecked"
             android:layout_weight=".1"
             android:layout_width="0dp"
             android:layout_height="match_parent" />

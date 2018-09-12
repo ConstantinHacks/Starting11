@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.constantinkoehler.starting11.Model.Forward
 import com.constantinkoehler.starting11.Model.Midfielder
 import com.constantinkoehler.starting11.Model.allPlayers
-import kotlinx.android.synthetic.main.player_lineup_entry.*
-import kotlinx.android.synthetic.main.player_lineup_entry.view.*
-import kotlinx.android.synthetic.main.player_table_entry.*
 
 class LineupFragment : Fragment() {
 
@@ -37,11 +35,16 @@ class LineupFragment : Fragment() {
         goalkeepers = view.findViewById(R.id.goalkeeperPositions)
 
         allPlayers.filter { it.isInLineUp }.map {
+            val player = it
             val playerCell = LineupEntry(context)
-            playerCell.nameTextView.text = it.lastName
-            playerCell.numberTextView.text = it.number.toString()
+            playerCell.nameTextView.text = player.lastName
+            playerCell.numberTextView.text = player.number.toString()
 
-            when (it){
+            playerCell.setOnClickListener {
+                Toast.makeText(context,player.toString(),Toast.LENGTH_LONG).show()
+            }
+
+            when (player){
                 is Forward -> {
                     attackers.addView(playerCell)
                 }
@@ -49,10 +52,11 @@ class LineupFragment : Fragment() {
                     midfielders.addView(playerCell)
                 }
                 else -> {
-                    print("Unkown Player Type")
+                    print("Unknown Player Type")
                 }
             }
         }
+
 
         return view
     }
