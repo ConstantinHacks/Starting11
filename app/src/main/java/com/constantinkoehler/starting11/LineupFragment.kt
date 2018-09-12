@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
-import com.constantinkoehler.starting11.Model.Forward
-import com.constantinkoehler.starting11.Model.Midfielder
-import com.constantinkoehler.starting11.Model.allPlayers
+import com.constantinkoehler.starting11.Model.*
 
 class LineupFragment : Fragment() {
 
@@ -50,6 +48,12 @@ class LineupFragment : Fragment() {
                 }
                 is Midfielder -> {
                     midfielders.addView(playerCell)
+                }
+                is Defender -> {
+                    defenders.addView(playerCell)
+                }
+                is Goalkeeper -> {
+                    goalkeepers.addView(playerCell)
                 }
                 else -> {
                     print("Unknown Player Type")

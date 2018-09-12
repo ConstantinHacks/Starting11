@@ -38,6 +38,8 @@ class PlayerListFragment : Fragment() {
             Toast.makeText(activity, "Clicked on Player",
                     Toast.LENGTH_LONG).show()
 
+
+
         }
 
         return view

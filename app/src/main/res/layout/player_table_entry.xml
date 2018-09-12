@@ -14,7 +14,7 @@
 
 
     <LinearLayout
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:layout_width="match_parent">
 
         <TextView
@@ -37,6 +37,8 @@
 
             <TextView
                 android:id="@+id/playerName"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Wayne Rooney" />

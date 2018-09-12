@@ -31,6 +31,10 @@ class PlayerListAdapter(context: Context,
             positionTextView.text = "Forward"
         } else if (player is Midfielder) {
             positionTextView.text = "Midfield"
+        } else if (player is Defender) {
+            positionTextView.text = "Defender"
+        } else {
+            positionTextView.text = "Goalkeeper"
         }
 
         statisticTextView.text = "${player.mainStatistic} & ${player.secondStatistic}"
