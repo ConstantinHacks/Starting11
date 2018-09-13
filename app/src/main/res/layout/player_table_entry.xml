@@ -23,7 +23,7 @@
             android:gravity="center"
             android:textSize="40sp"
             android:layout_width="0dp"
-            android:layout_weight=".25"
+            android:layout_weight=".20"
             android:layout_height="match_parent" />
 
         <LinearLayout
@@ -52,15 +52,16 @@
         </LinearLayout>
 
         <TextView
-            android:layout_weight=".2"
+            android:layout_weight=".25"
             android:id="@+id/playerStats"
             android:gravity="center"
-            tools:text="5 Goals and 3 Assists"
-            android:layout_width="wrap_content"
+            android:maxLines="2"
+            tools:text="33 Saves and 11 Clean Sheats"
+            android:layout_width="0dp"
             android:layout_height="match_parent" />
 
-        <ImageView
-            android:src="@drawable/ic_unchecked"
+        <CheckBox
+            android:id="@+id/selectedCheckBox"
             android:layout_weight=".1"
             android:layout_width="0dp"
             android:layout_height="match_parent" />

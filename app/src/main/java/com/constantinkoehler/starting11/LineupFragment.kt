@@ -32,17 +32,16 @@ class LineupFragment : Fragment() {
         defenders = view.findViewById(R.id.defenderPositions)
         goalkeepers = view.findViewById(R.id.goalkeeperPositions)
 
-        allPlayers.filter { it.isInLineUp }.map {
-            val player = it
+        allPlayers.filter { it.isInLineUp }.mapIndexed { index, selectedPlayer ->
             val playerCell = LineupEntry(context)
-            playerCell.nameTextView.text = player.lastName
-            playerCell.numberTextView.text = player.number.toString()
+            playerCell.nameTextView.text = selectedPlayer.lastName
+            playerCell.numberTextView.text = selectedPlayer.number.toString()
 
             playerCell.setOnClickListener {
-                Toast.makeText(context,player.toString(),Toast.LENGTH_LONG).show()
+                Toast.makeText(view.context,selectedPlayer.toString(),Toast.LENGTH_SHORT).show()
             }
 
-            when (player){
+            when (selectedPlayer){
                 is Forward -> {
                     attackers.addView(playerCell)
                 }
@@ -60,7 +59,6 @@ class LineupFragment : Fragment() {
                 }
             }
         }
-
 
         return view
     }

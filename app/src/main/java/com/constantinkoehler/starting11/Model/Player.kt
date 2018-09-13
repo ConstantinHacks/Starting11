@@ -14,7 +14,7 @@ data class Statistic(val k : String, val v: Int){
 open class Player(private val firstName: String, val lastName: String, val number: Int) : Serializable {
     var mainStatistic = Statistic("",0)
     var secondStatistic = Statistic("",0)
-    var isInLineUp = true
+    var isInLineUp = false
     val name = "$firstName $lastName"
 
     override fun toString(): String {
